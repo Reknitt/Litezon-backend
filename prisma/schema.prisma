@@ -11,21 +11,24 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  email String @unique
-  name String?
-  role Role @default(USER)
-  posts Post[]
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  role  Role    @default(USER)
 }
 
-model Post {
-  id Int @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  title String
-  published Boolean @default(false)
-  author User @relation(fields: [authorId], references: [id])
-  authorId Int
+model Goods {
+  id          Int @id @default(autoincrement())
+  name        String
+  description Description?
+
 }
+
+model Description {
+  id      Int   @id @default(autoincrement())
+  goods   Goods @relation(fields: [goodsId], references: [id])
+  goodsId Int   @unique()
+} 
 
 enum Role {
   ADMIN

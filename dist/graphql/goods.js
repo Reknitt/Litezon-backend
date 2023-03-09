@@ -8,37 +8,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
-require("reflect-metadata");
+exports.Goods = void 0;
 const type_graphql_1 = require("type-graphql");
-const class_validator_1 = require("class-validator");
-const role_1 = __importDefault(require("./role"));
-let User = class User {
+const description_1 = require("./description");
+let Goods = class Goods {
 };
 __decorate([
     (0, type_graphql_1.Field)(() => type_graphql_1.ID),
     __metadata("design:type", Number)
-], User.prototype, "id", void 0);
+], Goods.prototype, "id", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(),
-    (0, class_validator_1.IsEmail)(),
+    (0, type_graphql_1.Field)(() => String),
     __metadata("design:type", String)
-], User.prototype, "email", void 0);
+], Goods.prototype, "name", void 0);
 __decorate([
-    (0, type_graphql_1.Field)(() => String, { nullable: true }),
-    __metadata("design:type", String)
-], User.prototype, "name", void 0);
-__decorate([
-    (0, class_validator_1.IsEnum)(role_1.default),
-    (0, type_graphql_1.Field)(() => role_1.default, { nullable: true }),
-    __metadata("design:type", String)
-], User.prototype, "role", void 0);
-User = __decorate([
+    (0, type_graphql_1.Field)(() => description_1.Description, { nullable: true }),
+    __metadata("design:type", description_1.Description)
+], Goods.prototype, "description", void 0);
+Goods = __decorate([
     (0, type_graphql_1.ObjectType)()
-], User);
-exports.User = User;
-//# sourceMappingURL=user.js.map
+], Goods);
+exports.Goods = Goods;
+//# sourceMappingURL=goods.js.map

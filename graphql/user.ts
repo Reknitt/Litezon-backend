@@ -1,24 +1,24 @@
-import { Field, ID, ObjectType } from 'type-graphql';
 import 'reflect-metadata'
+import { Field, ID, ObjectType } from 'type-graphql';
 import { Post } from './post';
-import { IsEmail } from 'class-validator';
+import { IsEmail, IsEnum } from 'class-validator';
 import Role from './role';
+
+
 
 @ObjectType()
 export class User {
-    @Field((type) => ID)
+    @Field(() => ID)
     id: Number
 
     @Field()
     @IsEmail()
     email: String
 
-    @Field((type) => String, {nullable: true})
+    @Field(() => String, {nullable: true})
     name?: String | null
 
-    @Field((type) => Role)
+    @IsEnum(Role)
+    @Field(() => Role, {nullable: true})
     role: Role
-
-    @Field((type) => [Post], {nullable: true})
-    posts?: [Post] | null
 }
